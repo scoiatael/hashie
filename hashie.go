@@ -38,11 +38,8 @@ func Format(entry string) (string, error) {
 	if len(parts) < 2 {
 		return "", ErrNotEnoughParts
 	}
-	if len(parts) > 2 {
-		return "", ErrTooManyParts
-	}
 	name := parts[0]
-	value := parts[1]
+  value := strings.Join(parts[1:], Sep)
 	return fmt.Sprintf("\"%s:%s\": \"%s\"", name, Hash(value), value), nil
 }
 
